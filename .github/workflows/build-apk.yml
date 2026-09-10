@@ -37,7 +37,10 @@ jobs:
             cmake \
             libffi-dev \
             libssl-dev
-
+      - name: Accept Android SDK licenses
+        run: |
+          mkdir -p "$HOME/.buildozer/android/platform/android-sdk/licenses"
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
       - name: Install Buildozer
         run: |
           python -m pip install --upgrade pip
